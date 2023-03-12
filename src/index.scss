@@ -1,0 +1,214 @@
+body {
+  margin: 0;
+  font-family: "arial";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #dedede;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h2 {
+
+  font-size: 2em;
+  text-align: center;
+  padding-bottom: 10%;
+  font-weight: bold;
+}
+
+.app-header-logo {
+  width: 100%;
+}
+
+.app-header-logo-link {
+  width: 6%;
+  padding: 10px;
+}
+
+.app-header-div-button {
+  padding-left: 40px;
+}
+
+.app-header-button {
+  margin-right: 20px !important;
+  font-weight: bold !important;
+}
+
+.app-header-button-login {
+  color: white !important;
+  background-color: black !important;
+  font-weight: bold !important;
+}
+
+.app-header-div-profile {
+  display: flex;
+  text-align: justify;
+}
+
+.app-header-div-coins-bet {
+  display: flex;
+}
+
+.app-header-div-logo-bet {
+  width: 60px;
+  margin-left: 7px;
+}
+
+.app-header-logo-bet {
+  width: 20px;
+}
+
+.app-header-div-avatar {
+  display: flex;
+  align-items: center;
+}
+
+
+//https://www.mmogratuit.com/wp-content/uploads/2014/12/League-of-Legends-wallpaper-4.jpg
+// Logo role https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/
+
+.team {
+  width: 20%;
+
+  &__container {
+    margin: 5%;
+    display: block;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__card {
+
+    padding: 5px;
+    padding-bottom: 10%;
+    text-align: center;
+  }
+
+  &__card :hover {
+    background-color: rgb(239, 239, 239);
+    transition: background-color 1s ease-out;
+  }
+
+  &__card-link {
+    text-decoration: none;
+  }
+
+  &__card-logo {
+    height: 130px;
+  }
+
+  &__card-logo-img {
+    width: 50%;
+  }
+
+  &__card-name {
+    margin-top: 5%;
+    font-weight: bold;
+    font-size: larger;
+  }
+}
+
+
+
+.player {
+  margin: 5%;
+  display: block;
+
+}
+
+.player-row {
+  display: flex;
+}
+
+.player-card {
+  padding: 5px;
+  padding-bottom: 10%;
+  text-align: left;
+}
+
+.player-card-player {
+  text-align: center;
+}
+
+.player-card-player-img {
+  width: 70%;
+}
+
+.player-card-role-img {
+  width: 25%;
+  text-align: left;
+}
+
+.player-card-name {
+  text-align: center;
+  margin-top: 5%;
+  font-weight: bold;
+  font-size: larger;
+}
+
+
+.login {
+  height: 100%;
+  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-image: url("https://cdn1.dotesports.com/wp-content/uploads/2019/10/04160207/worlds-league-of-legends-entradas.jpg");
+  background-size: cover;
+  background-position: center;
+  margin: 0 !important;
+
+  &__card{
+    padding: 3%;
+    background-color: rgba(255, 255, 255, .85) !important;
+  }
+
+  &__card-login {
+    max-width: 100% !important;
+  }
+
+  &__column-inputs {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+  }
+  &__text-user{
+    width: 100%;
+  }
+
+  &__div-center {
+    justify-content: center;
+    display: flex;
+  }
+
+  &__logo-lfl {
+    width: 30%;
+    display: flex;
+  }
+
+  &__inputs {
+    margin-bottom: 5%;
+    width: 100%;
+  }
+
+  &__container-inputs {
+    justify-content: center;
+    display: flex;
+  }
+  &__span {
+    color: #666666;
+  }
+  &__span-link {
+    text-decoration: none;
+    color: #666666;
+  }
+}

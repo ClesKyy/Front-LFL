@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+html, body, #root{
+  height: 100%;
+  --bs-link-hover-color : #000000;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
