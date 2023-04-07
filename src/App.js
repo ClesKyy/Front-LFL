@@ -8,7 +8,6 @@ import WebFont from 'webfontloader';
 import Team from './Team';
 import Player from './Player';
 import TeamApi from './TeamApi';
-import Signup from './Signup';
 
 
 function App() {
@@ -25,8 +24,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/inscription" element={<Signup />} />
         <Route path="/equipes" element={<TeamApi />} />
+        <Route path="/equipes/:Team" element={<Player/>} />
         <Route path="/joueurs" element={<Player />} />
         </Routes>
         </BrowserRouter>

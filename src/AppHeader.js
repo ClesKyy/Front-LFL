@@ -35,10 +35,15 @@ function AppHeader(props) {
         checkIfConnected();
     }, [isConnected])
 
-    const logout = () => {
-        localStorage.removeItem("access_token");
+    const connect = () => {
+        window.location.href = "/login";
     }
-
+    const disconnect = () => {
+        window.location.href = "/login";
+        localStorage.removeItem("access_token");
+        window.location.href = "/";
+    }
+    
     function isTokenExpired(token) {
         try {
             // Décoder le token pour récupérer les données de payload
@@ -79,27 +84,43 @@ function AppHeader(props) {
                             </div>
                         </Typography>
 
-                        {isConnected ? <Button className='app-header-button-login' color="inherit">Connexion</Button> :
-                        <Button color='inherit'>
-                            <div className='app-header-div-profile'>
-                                <div>
-                                    <div>
-                                       <span style={{ fontWeight: 'bold' }}>ClesKy</span> 
-                                    </div>
-                                    <div className='app-header-div-coins-bet'>
+                        {isConnected ?
+                            <div>
+                                <Button color='inherit' onClick={handleClick}>
+                                    <div className='app-header-div-profile'>
                                         <div>
-                                            12 110
+                                            <div>
+                                                <span style={{ fontWeight: 'bold' }}>ClesKy</span>
+                                            </div>
+                                            <div className='app-header-div-coins-bet'>
+                                                <div>
+                                                    12 110
+                                                </div>
+                                                <div className='app-header-div-logo-bet'>
+                                                    <img className='app-header-logo-bet' src='https://www.riotgames.com/assets/img/meta/6e86ac3d497a87330d381e3ee6e193c3/favicon.ico'></img>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className='app-header-div-logo-bet'>
-                                            <img className='app-header-logo-bet' src='https://www.riotgames.com/assets/img/meta/6e86ac3d497a87330d381e3ee6e193c3/favicon.ico'></img>
+                                        <div className='app-header-div-avatar'>
+                                            <Avatar alt="Avatar" src="https://1.bp.blogspot.com/-9N4wHnisYnI/YTurIWCPi3I/AAAAAAAB_vE/x9UQiid2gwo1i1GJ_AOwrJyL-QDiTap-gCLcBGAsYHQ/w200-h200/5067.jpg" />
                                         </div>
                                     </div>
-                                </div>
-                                <div className='app-header-div-avatar'>
-                                    <Avatar alt="Remy Sharp" src="https://1.bp.blogspot.com/-9N4wHnisYnI/YTurIWCPi3I/AAAAAAAB_vE/x9UQiid2gwo1i1GJ_AOwrJyL-QDiTap-gCLcBGAsYHQ/w200-h200/5067.jpg" />
-                                </div>
+                                </Button>
+                                <Menu
+                                    id="basic-menu"
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}
+                                    MenuListProps={{
+                                        'aria-labelledby': 'basic-button',
+                                    }}
+                                >
+                                    <MenuItem onClick={disconnect}>Déconnexion</MenuItem>
+                                </Menu>
                             </div>
-                            </Button>
+                            :
+                            <Button onClick={connect} className='app-header-button-login' color="inherit">Connexion</Button>
+
                         }
                     </Toolbar>
                 </AppBar>
