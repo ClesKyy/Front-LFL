@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  font-family: "arial";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #dedede;
@@ -117,14 +116,17 @@ h2 {
 
 
 .player {
-  margin: 5%;
-  display: block;
+  margin: 10px;
+  width: 15%;
 
 }
 
 .player-row {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
 
 .player-card {
   padding: 5px;
@@ -151,8 +153,26 @@ h2 {
   font-weight: bold;
   font-size: larger;
 }
+.player-header {
+  display: inline-block;
+  text-align: center;
+}
+.player-header-logo {
+  width: 10%;
+  margin: 20px;
+}
 
-
+.test {
+  justify-content: center;
+  display: flex;
+  margin: 20px;
+}
+.test2 {
+  margin-left: 200px;
+  margin-right: 200px;
+  font-size: 24px;
+  font-weight: 400;
+}
 .login {
   height: 100%;
   width: 100%;
@@ -172,7 +192,9 @@ h2 {
   &__card-login {
     max-width: 100% !important;
   }
-
+  &__title{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  }
   &__column-inputs {
     flex-direction: column;
     display: flex;
@@ -210,5 +232,8 @@ h2 {
   &__span-link {
     text-decoration: none;
     color: #666666;
+  }
+  &__hidden{
+    display: none;
   }
 }

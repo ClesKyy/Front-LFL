@@ -1,35 +1,43 @@
 import { Card, CardContent } from '@mui/material';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppHeader from './AppHeader';
 import './App.css';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 function Player(props) {
-        useEffect(()=>{
-        },[])
+    const [team, setTeam] = useState({});
+    const { teamName } = useParams();
+
+    useEffect(() => {
+      axios.get(`https://localhost:7108/team/${teamName}`, {})
+        .then((res) => {
+          setTeam(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
     return (
-        <div>
-            <AppHeader />
             <div className='player'>
                 <div className='player-row'>
                     <div className='player-card'>
                         <Card>
                             <CardContent>
                                 <div className='player-card-role'>
-                                    <img className='player-card-role-img' src='https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom.png'></img>
+                                    <img className='player-card-role-img' src={props.player.roleIcon}></img>
                                 </div>
                                 <div className='player-card-player'>
-                                    <img className='player-card-player-img' src='https://images.prismic.io/liguefrlol/f353b5d1-1ead-4162-8359-2e82beaa69b5_Eika_Face.png?auto=compress,format'></img>
+                                    <img className='player-card-player-img' src={props.player.profileImg}></img>
                                 </div>
                                 <div className='player-card-name'>
-                                    Eika
+                                    {props.player.pseudo}
                                 </div>
                             </CardContent>
                         </Card>
                     </div>
-                    <p> {props.player.pseudo}</p>
+                    
                 </div>
             </div>
-        </div>
 
     );
 }

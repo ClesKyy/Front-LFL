@@ -12,6 +12,7 @@ import WebFont from 'webfontloader';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import axios from 'axios';
 import { Navigate, useHistory } from 'react-router-dom';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const theme = createTheme({
     palette: {
@@ -28,31 +29,51 @@ function Login(props) {
     const [showPassword, setShowPassword] = React.useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
     const [value, setValue] = React.useState('1');
-    const [formData, setFormData] = React.useState({ pseudo: '', password: '' });
-    const onSubmit = (event) => {
+    const [formDataLogin, setFormDataLogin] = React.useState({ pseudo: '', password: '' });
+    const [formDataSignUp,setFormDataSignUp] = React.useState({ pseudo: '', password: '' , email: ''});
+    const onSubmitLogin = (event) => {
         event.preventDefault();
 
-        axios.post("https://localhost:7108/auth/login", formData)
+        axios.post("https://localhost:7108/auth/login", formDataLogin)
             .then((res) => {
                 console.log(res.data.token);
                 localStorage.setItem("access_token", res.data.token);
                 const token = localStorage.getItem("access_token");
-                if (token != null){
+                if (token != null) {
                     window.location.href = "/";
                 }
-            
+
             })
             .catch(() => {
                 console.log("Identifiants incorrects");
+                var errorMessage = document.getElementById("error-message");
+                errorMessage.classList.remove("login__hidden");
+            })
+    }
+      const onSubmitSignUp = (event) => {
+        event.preventDefault();
+
+        axios.post("https://localhost:7108/auth/signup", formDataSignUp)
+            .then((res) => {
+                console.log(res.data.token);
+
+            })
+            .catch(() => {
+                console.log("une erreur est survenue");
+
             })
     }
 
-    const connect=() => { }       
 
-
-    const handleChange = (event, newValue) => {
-        setFormData({
-            ...formData,
+    const handleChangeLogin = (event, newValue) => {
+        setFormDataLogin({
+            ...formDataLogin,
+            [event.target.name]: event.target.value
+        });
+    };
+    const handleChangeSignUp = (event, newValue) => {
+        setFormDataSignUp({
+            ...formDataSignUp,
             [event.target.name]: event.target.value
         });
     };
@@ -61,140 +82,146 @@ function Login(props) {
     };
 
     return (
-        <ThemeProvider theme={theme}>
-            <div className="login">
-                <Card className='login__card'>
-                    <div className="login__card-login">
-                        <TabContext value={value}>
-                            <Box className='login__div-center' sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <TabList onChange={handleChangeForm} aria-label="lab API tabs example">
-                                    <Tab label="Connexion" value="1" />
-                                    <Tab label="Inscription" value="2" />
-                                </TabList>
-                            </Box>
-                            <TabPanel value="1">
-                                <form onSubmit={(event) => onSubmit(event)}>
-                                    <CardContent>
-                                        <div className='login__card-login'>
-                                            <h2>
-                                                Connexion
-                                            </h2>
-                                            <div className='login__container-inputs'>
-                                                <div className='login__column-inputs'>
-                                                    <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                                        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                                        <TextField onChange={(event) => handleChange(event)} name='pseudo' className='login__text-user' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
-                                                    </Box>
-                                                    <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                                        <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                                        <FormControl variant="standard">
-                                                            <InputLabel htmlFor="login-input-password">Mot de passe</InputLabel>
-                                                            <Input
-                                                                onChange={(event) => handleChange(event)}
-                                                                id="login-input-password"
-                                                                name='password'
-                                                                type={showPassword ? 'text' : 'password'}
-                                                                endAdornment={
-                                                                    <InputAdornment position="end">
-                                                                        <IconButton
-                                                                            aria-label="toggle password visibility"
-                                                                            onClick={() => setShowPassword(!showPassword)}
-                                                                        >
-                                                                            {showPassword ? <Visibility /> : <VisibilityOff />}
-                                                                        </IconButton>
-                                                                    </InputAdornment>
-                                                                }
-                                                            />
-                                                        </FormControl>
-                                                    </Box>
+        <body className='login-body'>
+            <ThemeProvider theme={theme}>
+                <div className="login">
+                    <Card className='login__card'>
+                        <div className="login__card-login">
+                            <TabContext value={value}>
+                                <Box className='login__div-center' sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                                    <TabList onChange={handleChangeForm} aria-label="lab API tabs example">
+                                        <Tab label="Connexion" value="1" />
+                                        <Tab label="Inscription" value="2" />
+                                    </TabList>
+                                </Box>
+                                <TabPanel value="1">
+                                    <form onSubmit={(event) => onSubmitLogin(event)}>
+                                        <CardContent>
+                                            <div className='login__card-login'>
+                                                <h2 className='login__title'>
+                                                    Connexion
+                                                </h2>
+                                                <div className='login__container-inputs'>
+                                                    <div className='login__column-inputs'>
+                                                        <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                                            <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                                            <TextField onChange={(event) => handleChangeLogin(event)} name='pseudo' className='login__text-user' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
+                                                        </Box>
+                                                        <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                                            <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                                            <FormControl variant="standard">
+                                                                <InputLabel htmlFor="login-input-password">Mot de passe</InputLabel>
+                                                                <Input
+                                                                    onChange={(event) => handleChangeLogin(event)}
+                                                                    id="login-input-password"
+                                                                    name='password'
+                                                                    type={showPassword ? 'text' : 'password'}
+                                                                    endAdornment={
+                                                                        <InputAdornment position="end">
+                                                                            <IconButton
+                                                                                aria-label="toggle password visibility"
+                                                                                onClick={() => setShowPassword(!showPassword)}
+                                                                            >
+                                                                                {showPassword ? <Visibility /> : <VisibilityOff />}
+                                                                            </IconButton>
+                                                                        </InputAdornment>
+                                                                    }
+                                                                />
+                                                            </FormControl>
+                                                        </Box>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </CardContent>
-                                    <div className='login__div-center'>
-                                        <div className='login__column-inputs'>
-                                            <CardActions>
-                                                <Button type='submit' variant="contained"> Connexion </Button>
-                                            </CardActions>
-                                        </div>
-                                    </div>
-                                </form>
-                            </TabPanel>
-                            <TabPanel value="2">
-                                <CardContent>
-                                    <div className='login__card-login'>
-                                        <h2>
-                                            Inscription
-                                        </h2>
-                                        <div className='login__container-inputs'>
+                                        </CardContent>
+                                        <div className='login__div-center'>
                                             <div className='login__column-inputs'>
-                                                <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                                    <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                                    <TextField className='login__text-user' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
-                                                </Box>
-                                                <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                                    <Email sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                                    <TextField className='login__text-user' id="input-with-sx" label="Email" variant="standard" />
-                                                </Box>
-                                                <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                                    <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                                    <FormControl variant="standard">
-                                                        <InputLabel htmlFor="signup-input-password">Mot de passe</InputLabel>
-                                                        <Input
-                                                            id="signup-input-password"
-                                                            type={showPassword ? 'text' : 'password'}
-
-                                                            endAdornment={
-                                                                <InputAdornment position="end">
-                                                                    <IconButton
-                                                                        aria-label="toggle password visibility"
-                                                                        onClick={() => setShowPassword(!showPassword)}
-                                                                    >
-                                                                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                                                                    </IconButton>
-                                                                </InputAdornment>
-                                                            }
-                                                        />
-                                                    </FormControl>
-                                                </Box>
-                                                <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                                    <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                                    <FormControl variant="standard">
-                                                        <InputLabel htmlFor="signup-input-confirm-password">Confirmer le mot de passe</InputLabel>
-                                                        <Input
-                                                            id="signup-input-confirm-input-password"
-                                                            type={showConfirmPassword ? 'text' : 'password'}
-
-                                                            endAdornment={
-                                                                <InputAdornment position="end">
-                                                                    <IconButton
-                                                                        aria-label="toggle password visibility"
-                                                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                                                    >
-                                                                        {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
-                                                                    </IconButton>
-                                                                </InputAdornment>
-                                                            }
-                                                        />
-                                                    </FormControl>
-                                                </Box>
+                                                <CardActions>
+                                                    <Button type='submit' variant="contained"> Connexion </Button>
+                                                </CardActions>
+                                                <div id="error-message" className='login__hidden'><span><CancelIcon></CancelIcon></span> Identifiants incorrects</div>
                                             </div>
                                         </div>
-                                    </div>
-                                </CardContent>
-                                <div className='login__div-center'>
-                                    <div className='login__column-inputs'>
-                                        <CardActions>
-                                            <Button variant="contained">Inscription</Button>
-                                        </CardActions>
-                                    </div>
-                                </div>
-                            </TabPanel>
-                        </TabContext>
-                    </div>
-                </Card>
-            </div>
-        </ThemeProvider>
+                                    </form>
+                                </TabPanel>
+                                <TabPanel value="2">
+                                    <form onSubmit={(event) => onSubmitSignUp(event)}>
+                                        <CardContent>
+                                            <div className='login__card-login'>
+                                                <h2 className='login__title'>
+                                                    Inscription
+                                                </h2>
+                                                <div className='login__container-inputs'>
+                                                    <div className='login__column-inputs'>
+                                                        <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                                            <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                                            <TextField onChange={(event) => handleChangeSignUp(event)}  className='login__text-user' name='pseudo' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
+                                                        </Box>
+                                                        <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                                            <Email sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                                            <TextField onChange={(event) => handleChangeSignUp(event)} className='login__text-user' name='email' id="input-with-sx" label="Email" variant="standard" />
+                                                        </Box>
+                                                        <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                                            <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                                            <FormControl variant="standard">
+                                                                <InputLabel htmlFor="signup-input-password">Mot de passe</InputLabel>
+                                                                <Input onChange={(event) => handleChangeSignUp(event)}
+                                                                    id="signup-input-password"
+                                                                    name='password'
+                                                                    type={showPassword ? 'text' : 'password'}
+
+                                                                    endAdornment={
+                                                                        <InputAdornment position="end">
+                                                                            <IconButton
+                                                                                aria-label="toggle password visibility"
+                                                                                onClick={() => setShowPassword(!showPassword)}
+                                                                            >
+                                                                                {showPassword ? <Visibility /> : <VisibilityOff />}
+                                                                            </IconButton>
+                                                                        </InputAdornment>
+                                                                    }
+                                                                />
+                                                            </FormControl>
+                                                        </Box>
+                                                   {/*     <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                                            <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                                            <FormControl variant="standard">
+                                                                <InputLabel htmlFor="signup-input-confirm-password">Confirmer le mot de passe</InputLabel>
+                                                                <Input
+                                                                    id="signup-input-confirm-input-password"
+                                                                    type={showConfirmPassword ? 'text' : 'password'}
+
+                                                                    endAdornment={
+                                                                        <InputAdornment position="end">
+                                                                            <IconButton
+                                                                                aria-label="toggle password visibility"
+                                                                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                                                            >
+                                                                                {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                                                                            </IconButton>
+                                                                        </InputAdornment>
+                                                                    }
+                                                                />
+                                                            </FormControl>
+                                                                </Box> */}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                        <div className='login__div-center'>
+                                            <div className='login__column-inputs'>
+                                                <CardActions>
+                                                    <Button type='submit' variant="contained">Inscription</Button>
+                                                </CardActions>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </TabPanel>
+                            </TabContext>
+                        </div>
+                    </Card>
+                </div>
+            </ThemeProvider>
+        </body>
     );
 }
 export default Login;
