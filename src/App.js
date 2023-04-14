@@ -9,6 +9,10 @@ import Team from './Team';
 import Player from './Player';
 import TeamApi from './TeamApi';
 import PlayerApi from './PlayerApi';
+import Classement from './Classement';
+import { Class } from '@mui/icons-material';
+import ClassementApi from './ClassementApi';
+import MatchApi from './MatchApi';
 
 
 function App() {
@@ -28,6 +32,8 @@ function App() {
         <Route path="/equipes" element={<TeamApi />} />
         <Route path="/equipes/:teamName" element={<PlayerApi/>} />
         <Route path="/joueurs" element={<Player />} />
+        <Route path="/classement" element= {<ClassementApi/>} />
+        <Route path="/match" element= {<MatchApi/>} />
         </Routes>
         </BrowserRouter>
   );

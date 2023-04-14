@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './App.css';
 import { AppBar, Checkbox, createTheme, FormControl, FormControlLabel, FormGroup, IconButton, Input, InputAdornment, InputLabel, OutlinedInput, Tab, Tabs, TextField, ThemeProvider } from '@mui/material';
-import { AccountCircle, Visibility, VisibilityOff, Lock, Email } from '@mui/icons-material';
+import { AccountCircle, Visibility, VisibilityOff, Lock, Email, CheckCircle } from '@mui/icons-material';
 import WebFont from 'webfontloader';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import axios from 'axios';
@@ -30,7 +30,7 @@ function Login(props) {
     const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
     const [value, setValue] = React.useState('1');
     const [formDataLogin, setFormDataLogin] = React.useState({ pseudo: '', password: '' });
-    const [formDataSignUp,setFormDataSignUp] = React.useState({ pseudo: '', password: '' , email: ''});
+    const [formDataSignUp, setFormDataSignUp] = React.useState({ pseudo: '', password: '', email: '' });
     const onSubmitLogin = (event) => {
         event.preventDefault();
 
@@ -50,17 +50,25 @@ function Login(props) {
                 errorMessage.classList.remove("login__hidden");
             })
     }
-      const onSubmitSignUp = (event) => {
+    const onSubmitSignUp = (event) => {
         event.preventDefault();
 
         axios.post("https://localhost:7108/auth/signup", formDataSignUp)
             .then((res) => {
                 console.log(res.data.token);
-
+                var signUpMessage = document.getElementById("signup-message");
+                signUpMessage.classList.remove("login__hidden-signup");
+                var errorMessage = document.getElementById("error-message");
+                errorMessage.classList.add("login__hidden");
+                setTimeout(function() {
+                    window.location.href = "/login";
+                }, 2000);
             })
             .catch(() => {
-                console.log("une erreur est survenue");
-
+                var errorMessage = document.getElementById("error-message");
+                errorMessage.classList.remove("login__hidden");
+                var signUpMessage = document.getElementById("signup-message");
+                signUpMessage.classList.add("login__hidden-signup");
             })
     }
 
@@ -154,7 +162,7 @@ function Login(props) {
                                                     <div className='login__column-inputs'>
                                                         <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                                             <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                                            <TextField onChange={(event) => handleChangeSignUp(event)}  className='login__text-user' name='pseudo' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
+                                                            <TextField onChange={(event) => handleChangeSignUp(event)} className='login__text-user' name='pseudo' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
                                                         </Box>
                                                         <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                                             <Email sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
@@ -182,7 +190,7 @@ function Login(props) {
                                                                 />
                                                             </FormControl>
                                                         </Box>
-                                                   {/*     <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                                        {/*     <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                                             <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                                                             <FormControl variant="standard">
                                                                 <InputLabel htmlFor="signup-input-confirm-password">Confirmer le mot de passe</InputLabel>
@@ -212,6 +220,8 @@ function Login(props) {
                                                 <CardActions>
                                                     <Button type='submit' variant="contained">Inscription</Button>
                                                 </CardActions>
+                                                <div id="error-message" className='login__hidden'><span><CancelIcon></CancelIcon></span> Une erreur est survenue</div>
+                                                <div id="signup-message" className='login__hidden-signup'><span><CheckCircle></CheckCircle></span> Votre compte a été créé</div>
                                             </div>
                                         </div>
                                     </form>

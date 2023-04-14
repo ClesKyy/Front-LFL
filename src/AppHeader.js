@@ -80,7 +80,8 @@ function AppHeader(props) {
                             <div className='app-header-div-button'>
                                 <Button className='app-header-button' color="inherit">Accueil</Button>
                                 <Button className='app-header-button' color="inherit" component={Link} to="/equipes">Équipe</Button>
-                                <Button className='app-header-button' color="inherit" >Équipe</Button>
+                                <Button className='app-header-button' color="inherit" component={Link} to="/classement">Classement</Button>
+                                <Button className='app-header-button' color="inherit" component={Link} to="/match">Match</Button>
                             </div>
                         </Typography>
 
@@ -130,4 +131,3 @@ function AppHeader(props) {
 }
 
 export default AppHeader;
-

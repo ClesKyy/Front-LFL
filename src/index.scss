@@ -233,7 +233,73 @@ h2 {
     text-decoration: none;
     color: #666666;
   }
-  &__hidden{
+  &__hidden, &__hidden-signup{
     display: none;
   }
+}
+.ranking {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.match {
+  margin: 10px;
+}
+.match-row {
+  display: flex;
+  justify-content: center;
+}
+.match-card{
+  width: 80%;
+}
+.match-logo-left{
+  align-items: center;
+  display: flex;
+  width: 45%;
+}
+.match-logo-middle{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 10%;
+  font-size: 32px;
+}
+
+.match-logo-right{
+  align-items: center;
+  display: flex;
+  justify-content: end;
+  width: 45%;
+}
+.match-logo-img{
+  width: 100px;
+}
+.match-card-content{
+ display: flex;
+ margin-top:30px;
+}
+.match-title-team-right {
+  margin-right: 75px;
+  font-size: 32px;
+}
+.match-title-team-left {
+  margin-left: 75px;
+  font-size: 32px;
+}
+
+.matchDate{
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.5px solid rgb(197, 193, 193);
+  padding-bottom: 10px;
+}
+
+.score-red{
+  color:red;
+}
+
+.score-green{
+  color: green;
 }

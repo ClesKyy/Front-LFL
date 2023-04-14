@@ -1,6 +1,5 @@
 import { Card, CardContent } from '@mui/material';
 import React, { useEffect } from 'react';
-import AppHeader from './AppHeader';
 import './App.css';
 function Team(props) {
     useEffect(()=>{
