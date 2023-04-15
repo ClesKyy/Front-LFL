@@ -16,7 +16,7 @@ function Team(props) {
                                         <img className='team__card-logo-img' src={props.team.logo}></img>
                                     </div>
                                     <div className='team__card-name'>
-                                        {props.team.name}
+                                        {props.team.label}
                                         </div>
                                 </CardContent>
                             </Card>

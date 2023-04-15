@@ -154,11 +154,10 @@ h2 {
   font-size: larger;
 }
 .player-header {
-  display: inline-block;
   text-align: center;
 }
 .player-header-logo {
-  width: 10%;
+  width: 150px;
   margin: 20px;
 }
 
@@ -291,7 +290,7 @@ h2 {
 
 .matchDate{
   display: flex;
-  justify-content: center;
+  justify-content: left;
   border-bottom: 0.5px solid rgb(197, 193, 193);
   padding-bottom: 10px;
 }

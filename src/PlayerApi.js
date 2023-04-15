@@ -40,7 +40,7 @@ function PlayerApi(props) {
       <div className="player-header">
         <div>
         <img className="player-header-logo" src={team.logo} />
-        <h1 style={{ fontWeight: 'bold' , fontSize: '48px'}}>{teamName}</h1>
+        <h1 style={{ fontWeight: 'bold' , fontSize: '48px'}}>{teamName.toUpperCase()}</h1>
         </div>
       </div>
       <div className="test">
