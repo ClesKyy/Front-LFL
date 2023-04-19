@@ -24,7 +24,12 @@ function Player(props) {
                         <Card>
                             <CardContent>
                                 <div className='player-card-role'>
+                                    <div>
                                     <img className='player-card-role-img' src={props.player.roleIcon}></img>
+                                    </div>
+                                    <div>
+                                    <img className='player-card-role-img' src={team.logo}></img>
+                                    </div>  
                                 </div>
                                 <div className='player-card-player'>
                                     <img className='player-card-player-img' src={props.player.profileImg}></img>

@@ -19,9 +19,11 @@ function MatchApi() {
     return (
         <div>
             <AppHeader />
+            <div>
             {matches.map((matches, index) => (
                 <Match matches={matches} key={index} />
             ))}
+            </div>
         </div>
     );
 }

@@ -132,6 +132,10 @@ h2 {
   padding: 5px;
   padding-bottom: 10%;
   text-align: left;
+  transition: transform 0.3s ease-in-out;
+}
+.player-card:hover {
+  transform: scale(1.1);
 }
 
 .player-card-player {
@@ -141,9 +145,12 @@ h2 {
 .player-card-player-img {
   width: 70%;
 }
-
+.player-card-role{
+  display: flex;
+  justify-content: space-between;
+}
 .player-card-role-img {
-  width: 25%;
+  width: 50px;
   text-align: left;
 }
 
@@ -153,9 +160,11 @@ h2 {
   font-weight: bold;
   font-size: larger;
 }
+
 .player-header {
   text-align: center;
 }
+
 .player-header-logo {
   width: 150px;
   margin: 20px;
@@ -166,12 +175,14 @@ h2 {
   display: flex;
   margin: 20px;
 }
+
 .test2 {
   margin-left: 200px;
   margin-right: 200px;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 400;
 }
+
 .login {
   height: 100%;
   width: 100%;
@@ -183,7 +194,7 @@ h2 {
   background-position: center;
   margin: 0 !important;
 
-  &__card{
+  &__card {
     padding: 3%;
     background-color: rgba(255, 255, 255, .85) !important;
   }
@@ -191,9 +202,11 @@ h2 {
   &__card-login {
     max-width: 100% !important;
   }
-  &__title{
+
+  &__title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
   }
+
   &__column-inputs {
     flex-direction: column;
     display: flex;
@@ -202,7 +215,8 @@ h2 {
     align-items: center;
     justify-items: center;
   }
-  &__text-user{
+
+  &__text-user {
     width: 100%;
   }
 
@@ -225,17 +239,22 @@ h2 {
     justify-content: center;
     display: flex;
   }
+
   &__span {
     color: #666666;
   }
+
   &__span-link {
     text-decoration: none;
     color: #666666;
   }
-  &__hidden, &__hidden-signup{
+
+  &__hidden,
+  &__hidden-signup {
     display: none;
   }
 }
+
 .ranking {
   display: flex;
   justify-content: center;
@@ -246,59 +265,79 @@ h2 {
 .match {
   margin: 10px;
 }
+
 .match-row {
   display: flex;
   justify-content: center;
 }
-.match-card{
+
+.match-cards {
   width: 80%;
 }
-.match-logo-left{
+.match-card {
+  margin-bottom: 10px;
+}
+.match-card.expanded {
+  transform: scaleY(1.1);
+  transform-origin: top;
+  z-index: 1;
+}
+
+.match-logo-left {
   align-items: center;
   display: flex;
   width: 45%;
 }
-.match-logo-middle{
-  justify-content: center;
-  align-items: center;
-  display: flex;
+
+.match-logo-middle {
+  text-align: center;
+  display: block;
   width: 10%;
   font-size: 32px;
 }
 
-.match-logo-right{
+.match-logo-right {
   align-items: center;
   display: flex;
   justify-content: end;
   width: 45%;
 }
-.match-logo-img{
+
+.match-logo-img {
   width: 100px;
 }
-.match-card-content{
- display: flex;
- margin-top:30px;
+
+.match-card-content {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
 .match-title-team-right {
   margin-right: 75px;
   font-size: 32px;
 }
+
 .match-title-team-left {
   margin-left: 75px;
   font-size: 32px;
 }
 
-.matchDate{
+.matchDate {
   display: flex;
   justify-content: left;
   border-bottom: 0.5px solid rgb(197, 193, 193);
   padding-bottom: 10px;
+  font-size: 32px;
+  align-items: center;
 }
 
-.score-red{
-  color:red;
+
+
+.score-red {
+  color: red;
 }
 
-.score-green{
+.score-green {
   color: green;
 }
