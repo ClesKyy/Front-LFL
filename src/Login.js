@@ -39,6 +39,7 @@ function Login(props) {
                 console.log(res.data.token);
                 localStorage.setItem("access_token", res.data.token);
                 const token = localStorage.getItem("access_token");
+                localStorage.setItem("pseudo", formDataLogin.pseudo);
                 if (token != null) {
                     window.location.href = "/";
                 }

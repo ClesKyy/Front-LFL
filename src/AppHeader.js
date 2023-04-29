@@ -8,6 +8,7 @@ import { purple } from '@mui/material/colors';
 import { Link } from 'react-router-dom';
 import { BuildOutlined } from '@mui/icons-material';
 import { fontWeight } from '@mui/system';
+import axios from 'axios';
 
 const theme = createTheme({
     palette: {
@@ -21,6 +22,7 @@ const theme = createTheme({
 });
 
 function AppHeader(props) {
+    const pseudo = localStorage.getItem("pseudo");
     const [anchorEl, setAnchorEl] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
     const open = Boolean(anchorEl);
@@ -34,6 +36,18 @@ function AppHeader(props) {
     useEffect(() => {
         checkIfConnected();
     }, [isConnected])
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        axios.get(`https://localhost:7108/auth/${pseudo}`, {})
+          .then((res) => {
+            setUser(res.data);
+            console.log(res.data)
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, []);
 
     const connect = () => {
         window.location.href = "/login";
@@ -41,6 +55,7 @@ function AppHeader(props) {
     const disconnect = () => {
         window.location.href = "/login";
         localStorage.removeItem("access_token");
+        localStorage.removeItem("pseudo");
         window.location.href = "/";
     }
     
