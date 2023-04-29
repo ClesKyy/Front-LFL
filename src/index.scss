@@ -347,3 +347,23 @@ h2 {
 .hidden-vote-button {
   display:none ;
 }
+
+.profile-avatar-div{
+  left: 44%;
+  position: absolute;
+  text-align: center;
+  transform: translateY(-50%);
+}
+.profile-avatar-icon{
+  width: 40%;
+  border-radius: 50px;
+}
+.profile-card{
+  margin: 100px;
+}
+.profile-user-name{
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  margin-top: 75px;
+}
