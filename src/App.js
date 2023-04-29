@@ -13,6 +13,7 @@ import Classement from './Classement';
 import { Class } from '@mui/icons-material';
 import ClassementApi from './ClassementApi';
 import MatchApi from './MatchApi';
+import Profile from './Profile';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/joueurs" element={<Player />} />
         <Route path="/classement" element= {<ClassementApi/>} />
         <Route path="/match" element= {<MatchApi/>} />
+        <Route path="/profil" element= {<Profile/>} />
         </Routes>
         </BrowserRouter>
   );

@@ -106,7 +106,7 @@ function AppHeader(props) {
                                     <div className='app-header-div-profile'>
                                         <div>
                                             <div>
-                                                <span style={{ fontWeight: 'bold' }}>ClesKy</span>
+                                                <span style={{ fontWeight: 'bold' }}>{pseudo}</span>
                                             </div>
                                             <div className='app-header-div-coins-bet'>
                                                 <div>
