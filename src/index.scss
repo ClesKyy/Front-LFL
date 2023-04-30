@@ -379,7 +379,7 @@ h2 {
   font-weight: bold;
   margin-top: 75px;
 }
-.profile-content{
+.profile-content-row{
   display: flex;
   margin-left: 50px;
   margin-top: 50px;
@@ -417,4 +417,11 @@ width: 50%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+}
+
+.profile-card-info-title-content{
+  padding-top: 10px;
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
 }

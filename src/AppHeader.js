@@ -52,6 +52,9 @@ function AppHeader(props) {
     const connect = () => {
         window.location.href = "/login";
     }
+    const profile = () => {
+        window.location.href = "/profil";
+    }
     const disconnect = () => {
         window.location.href = "/login";
         localStorage.removeItem("access_token");
@@ -131,6 +134,7 @@ function AppHeader(props) {
                                         'aria-labelledby': 'basic-button',
                                     }}
                                 >
+                                    <MenuItem onClick={profile}>Profil</MenuItem>
                                     <MenuItem onClick={disconnect}>Déconnexion</MenuItem>
                                 </Menu>
                             </div>

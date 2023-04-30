@@ -2,8 +2,17 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import AppHeader from './AppHeader';
-import { Card, CardContent, LinearProgress } from '@mui/material';
+import { Button, Card, CardContent, LinearProgress, ThemeProvider, createTheme } from '@mui/material';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#000000',
+        },
+    },
+});
 
 function Profile(props) {
     const pseudo = localStorage.getItem("pseudo");
@@ -19,6 +28,7 @@ function Profile(props) {
             });
     }, []);
     return (
+        <ThemeProvider theme={theme}>
         <div>
             <div>
                 <AppHeader />
@@ -37,7 +47,7 @@ function Profile(props) {
                     {user.pseudo}
                 </div>
                 <CardContent>
-                    <div className='profile-content'>
+                    <div className='profile-content-row'>
                         <div className='profile-content-left'>
                             <div className='profile-content-card-rank'>
                                 <div>
@@ -68,16 +78,65 @@ function Profile(props) {
                                         </div>
                                     </div>
                                     <div>
-                                        <LinearProgress color='inherit' variant="determinate" value={10} />
+                                        <LinearProgress color='inherit' variant="determinate" value={50} />
                                     </div>
                                 </div>
                             </div>
-
+                        </div>
+                    </div>
+                    <div className='profile-content-row'>
+                        <div className='profile-content-left'>
+                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Parties pariées :</span>
+                            <div>0</div>
+                        </div>
+                        <div className='profile-content-right'>
+                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Taux de Victoire  :</span>
+                            <div>0</div>
+                        </div>
+                    </div>
+                    <div className='profile-content-row'>
+                        <div className='profile-content-left'>
+                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Victoires :</span>
+                            <div>0</div>
+                        </div>
+                        <div className='profile-content-right'>
+                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Défaites :</span>
+                            <div>0</div>
+                        </div>
+                    </div>
+                    <div className='profile-content-row'>
+                        <div className='profile-content-left'>
+                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Nombre de points :</span>
+                            <div>0</div>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+            <Card className='profile-card'>
+                <div>
+                    <div className='profile-card-info-title-content'>Vos informations</div>
+                </div>
+                <CardContent>
+                <div className='profile-content-row'>
+                        <div className='profile-content-left'>
+                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Nom d'utilisateur :</span>
+                            <div>{user.pseudo}</div>
+                        </div>
+                        <div className='profile-content-right'>
+                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Email :</span>
+                            <div>{user.email}</div>
+                        </div>
+                    </div>
+                    <div className='profile-content-row'>
+                        <div className='profile-content-left'>
+                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Changer de mot de passe  </span>
+                            <div><Button className='app-header-button-login' variant="contained" component={Link} to="/profil/password">Modifier mot de passe</Button></div>
                         </div>
                     </div>
                 </CardContent>
             </Card>
         </div>
+        </ThemeProvider>
     );
 }
 export default Profile;
