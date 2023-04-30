@@ -1,20 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import { useEffect } from 'react';
 import WebFont from 'webfontloader';
-import Team from './Team';
 import Player from './Player';
 import TeamApi from './TeamApi';
 import PlayerApi from './PlayerApi';
-import Classement from './Classement';
-import { Class } from '@mui/icons-material';
 import ClassementApi from './ClassementApi';
 import MatchApi from './MatchApi';
 import Profile from './Profile';
-
+import ChangePassword from './ChangePassword';
 
 function App() {
   useEffect(() => {
@@ -25,7 +21,6 @@ function App() {
     });
    }, []);
   return (
-
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -36,9 +31,9 @@ function App() {
         <Route path="/classement" element= {<ClassementApi/>} />
         <Route path="/match" element= {<MatchApi/>} />
         <Route path="/profil" element= {<Profile/>} />
+        <Route path="/profil/password" element= {<ChangePassword/>} />
         </Routes>
         </BrowserRouter>
   );
 }
-
 export default App;

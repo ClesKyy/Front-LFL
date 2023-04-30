@@ -425,3 +425,26 @@ width: 50%;
   font-size: 42px;
   font-weight: bold;
 }
+
+.change-password-card{
+  margin: 100px;
+}
+.change-password-title{
+  padding-top: 10px;
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+}
+.change-password-card-password{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 50px;
+}
+.change-password-button-div{
+  text-align: center;
+}
+.change-password-button-submit{
+  color: white !important;
+  background-color: black !important;
+  font-weight: bold !important;
+}
