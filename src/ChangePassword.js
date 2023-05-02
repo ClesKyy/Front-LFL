@@ -4,25 +4,36 @@ import AppHeader from './AppHeader';
 import './App.css';
 import { Button, Card, CardContent, FormControl, IconButton, Input, InputAdornment, InputLabel } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 function ChangePassword(props) {
     const [showOldPassword, setOldShowPassword] = React.useState(false);
     const [showNewPassword, setNewShowPassword] = React.useState(false);
-    const [formDataChangeChangePassword, setFormDataChangeChangePassword] = React.useState({ oldPassword: '', newPassword: '' });
+    const [formDataChangeChangePassword, setFormDataChangePassword] = React.useState({ password: '' });
     const handleChangeChangePassword = (event, newValue) => {
-        setFormDataChangeChangePassword({
+        setFormDataChangePassword({
             ...formDataChangeChangePassword,
-            [event.target.password]: event.target.value
+            [event.target.name]: event.target.value
         });
     };
+    const onSubmitChangePassword = (event) => {
+        event.preventDefault();
+        axios.put(`https://localhost:7108/auth/ClesKy`, formDataChangeChangePassword)
+            .then((res) => {
+                localStorage.setItem("password", formDataChangeChangePassword.password);
+                console.log(res.data);
+            })
+            .catch(() => {
+                console.log("Identifiants incorrects");
+            })
+    }
     return (
         <div>
             <div>
                 <AppHeader />
             </div>
             <Card className='change-password-card'>
+            <form onSubmit={(event) => onSubmitChangePassword(event)}>
                 <CardContent>
                     <div className='change-password-title'>Modification mot de passe :</div>
                     <div className='change-password-card-password'>
@@ -30,7 +41,7 @@ function ChangePassword(props) {
                             <InputLabel htmlFor="change-password-input-current-password">Mot de passe actuel</InputLabel>
                             <Input
                                 id="change-password-input-current-password"
-                                name='password'
+                                name='old-password'
                                 type={showOldPassword ? 'text' : 'password'}
                                 endAdornment={
                                     <InputAdornment position="end">
@@ -48,6 +59,7 @@ function ChangePassword(props) {
                         <FormControl>
                             <InputLabel htmlFor="change-password-input-new-password">Nouveau mot de passe</InputLabel>
                             <Input
+                            onChange={(event) => handleChangeChangePassword(event)}
                                 id="change-password-input-new-password"
                                 name='password'
                                 type={showNewPassword ? 'text' : 'password'}
@@ -66,6 +78,7 @@ function ChangePassword(props) {
                     </div>
                     <div className='change-password-button-div'><Button className='change-password-button-submit' type='submit' variant="contained">Valider</Button></div>
                 </CardContent>
+                </form>
             </Card>
         </div>
     );

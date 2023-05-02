@@ -29,113 +29,117 @@ function Profile(props) {
     }, []);
     return (
         <ThemeProvider theme={theme}>
-        <div>
             <div>
-                <AppHeader />
-            </div>
-            <Card className='profile-card'>
-                <div className='profile-avatar-div'>
-                    <div>
-                        <img className='profile-avatar-icon' src="https://1.bp.blogspot.com/-9N4wHnisYnI/YTurIWCPi3I/AAAAAAAB_vE/x9UQiid2gwo1i1GJ_AOwrJyL-QDiTap-gCLcBGAsYHQ/w200-h200/5067.jpg" />
-                    </div>
-                    <div className='profile-avatar-level'>
-                        <span className='profile-avatar-level-number'>250</span>
-                    </div>
+                <div>
+                    <AppHeader />
+                </div>
+                <Card className='profile-card'>
+                    <div className='profile-avatar-div'>
+                        <div>
+                            <img className='profile-avatar-icon' src="https://1.bp.blogspot.com/-9N4wHnisYnI/YTurIWCPi3I/AAAAAAAB_vE/x9UQiid2gwo1i1GJ_AOwrJyL-QDiTap-gCLcBGAsYHQ/w200-h200/5067.jpg" />
+                        </div>
+                        <div className='profile-avatar-level'>
+                            <span className='profile-avatar-level-number'>250</span>
+                        </div>
 
-                </div>
-                <div className='profile-user-name'>
-                    {user.pseudo}
-                </div>
-                <CardContent>
-                    <div className='profile-content-row'>
-                        <div className='profile-content-left'>
-                            <div className='profile-content-card-rank'>
-                                <div>
-                                    <img className='profile-content-card-rank-image' src='https://cdn3.emoji.gg/emojis/9476-challenger.png' />
-                                </div>
-                                <div>
-                                    <div style={{ fontWeight: 'bold', fontSize: '24px' }}>
-                                        Diamond
+                    </div>
+                    <div className='profile-user-name'>
+                        {user.pseudo}
+                    </div>
+                    <CardContent>
+                        <div className='profile-content-row'>
+                            <div className='profile-content-left'>
+                                <div className='profile-content-card-rank'>
+                                    <div>
+                                        <img className='profile-content-card-rank-image' src='https://cdn3.emoji.gg/emojis/9476-challenger.png' />
                                     </div>
                                     <div>
-                                        32 LP
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='profile-content-right'>
-                            <div className='profile-content-card'>
-                                <div className='profile-content-card-avatar-div'>
-                                    <img className='profile-content-card-avatar-image' src='https://1.bp.blogspot.com/-9N4wHnisYnI/YTurIWCPi3I/AAAAAAAB_vE/x9UQiid2gwo1i1GJ_AOwrJyL-QDiTap-gCLcBGAsYHQ/w200-h200/5067.jpg' />
-                                </div>
-                                <div className='profile-content-card-level'>
-                                    <div className='profile-content-card-level-number'>
                                         <div style={{ fontWeight: 'bold', fontSize: '24px' }}>
-                                            Niv. 250
+                                            Diamond
                                         </div>
                                         <div>
-                                            35 000 Exp
+                                            32 LP
                                         </div>
                                     </div>
-                                    <div>
-                                        <LinearProgress color='inherit' variant="determinate" value={50} />
+                                </div>
+                            </div>
+                            <div className='profile-content-right'>
+                                <div className='profile-content-card'>
+                                    <div className='profile-content-card-avatar-div'>
+                                        <img className='profile-content-card-avatar-image' src='https://1.bp.blogspot.com/-9N4wHnisYnI/YTurIWCPi3I/AAAAAAAB_vE/x9UQiid2gwo1i1GJ_AOwrJyL-QDiTap-gCLcBGAsYHQ/w200-h200/5067.jpg' />
+                                    </div>
+                                    <div className='profile-content-card-level'>
+                                        <div className='profile-content-card-level-number'>
+                                            <div style={{ fontWeight: 'bold', fontSize: '24px' }}>
+                                                Niv. 250
+                                            </div>
+                                            <div>
+                                                35 000 Exp
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <LinearProgress color='inherit' variant="determinate" value={50} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div className='profile-content-row'>
+                            <div className='profile-content-left'>
+                                <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Parties pariées :</span>
+                                <div>0</div>
+                            </div>
+                            <div className='profile-content-right'>
+                                <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Taux de Victoire  :</span>
+                                <div>0</div>
+                            </div>
+                        </div>
+                        <div className='profile-content-row'>
+                            <div className='profile-content-left'>
+                                <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Victoires :</span>
+                                <div>0</div>
+                            </div>
+                            <div className='profile-content-right'>
+                                <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Défaites :</span>
+                                <div>0</div>
+                            </div>
+                        </div>
+                        <div className='profile-content-row'>
+                            <div className='profile-content-left'>
+                                <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Nombre de points :</span>
+                                <div className='profile-content-left-point'><div>12 000</div>
+                                    <div className='app-header-div-logo-bet'>
+                                        <img className='app-header-logo-bet' src='https://www.riotgames.com/assets/img/meta/6e86ac3d497a87330d381e3ee6e193c3/favicon.ico'></img>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+                <Card className='profile-card'>
+                    <div>
+                        <div className='profile-card-info-title-content'>Vos informations</div>
                     </div>
-                    <div className='profile-content-row'>
-                        <div className='profile-content-left'>
-                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Parties pariées :</span>
-                            <div>0</div>
+                    <CardContent>
+                        <div className='profile-content-row'>
+                            <div className='profile-content-left'>
+                                <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Nom d'utilisateur :</span>
+                                <div>{user.pseudo}</div>
+                            </div>
+                            <div className='profile-content-right'>
+                                <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Email :</span>
+                                <div>{user.email}</div>
+                            </div>
                         </div>
-                        <div className='profile-content-right'>
-                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Taux de Victoire  :</span>
-                            <div>0</div>
+                        <div className='profile-content-row'>
+                            <div className='profile-content-left'>
+                                <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Changer de mot de passe  </span>
+                                <div><Button className='app-header-button-login' variant="contained" component={Link} to="/profil/password">Modifier mot de passe</Button></div>
+                            </div>
                         </div>
-                    </div>
-                    <div className='profile-content-row'>
-                        <div className='profile-content-left'>
-                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Victoires :</span>
-                            <div>0</div>
-                        </div>
-                        <div className='profile-content-right'>
-                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Défaites :</span>
-                            <div>0</div>
-                        </div>
-                    </div>
-                    <div className='profile-content-row'>
-                        <div className='profile-content-left'>
-                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Nombre de points :</span>
-                            <div>0</div>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
-            <Card className='profile-card'>
-                <div>
-                    <div className='profile-card-info-title-content'>Vos informations</div>
-                </div>
-                <CardContent>
-                <div className='profile-content-row'>
-                        <div className='profile-content-left'>
-                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Nom d'utilisateur :</span>
-                            <div>{user.pseudo}</div>
-                        </div>
-                        <div className='profile-content-right'>
-                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Email :</span>
-                            <div>{user.email}</div>
-                        </div>
-                    </div>
-                    <div className='profile-content-row'>
-                        <div className='profile-content-left'>
-                            <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Changer de mot de passe  </span>
-                            <div><Button className='app-header-button-login' variant="contained" component={Link} to="/profil/password">Modifier mot de passe</Button></div>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
+                    </CardContent>
+                </Card>
+            </div>
         </ThemeProvider>
     );
 }

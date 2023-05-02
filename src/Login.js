@@ -40,6 +40,7 @@ function Login(props) {
                 localStorage.setItem("access_token", res.data.token);
                 const token = localStorage.getItem("access_token");
                 localStorage.setItem("pseudo", formDataLogin.pseudo);
+                localStorage.setItem("password", formDataLogin.password);
                 if (token != null) {
                     window.location.href = "/";
                 }

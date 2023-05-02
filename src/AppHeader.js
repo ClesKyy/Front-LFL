@@ -59,6 +59,7 @@ function AppHeader(props) {
         window.location.href = "/login";
         localStorage.removeItem("access_token");
         localStorage.removeItem("pseudo");
+        localStorage.removeItem("password");
         window.location.href = "/";
     }
     

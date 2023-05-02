@@ -70,7 +70,6 @@ function Match(props) {
                                             </div>
                                         </div>
                                     </div>
-
                                 </CardContent>
                             </Card>
                         ))}
