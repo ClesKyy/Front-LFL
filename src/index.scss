@@ -83,6 +83,8 @@ h2 {
 }
 .home-container-icon{
   display: flex;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 .home-item-icon {
   width: 33.33%;
@@ -97,6 +99,13 @@ h2 {
   margin-top: 10px;
   padding-left: 120px;
   padding-right: 120px;
+}
+.home-container-level{
+  display: flex;
+  justify-content: center;
+}
+.home-item-level{
+  width: 40%;
 }
 .prankex{
   width: 10%;
