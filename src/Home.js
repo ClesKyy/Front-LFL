@@ -38,7 +38,7 @@ function Home(props) {
                         </div>
                         <div className='home-item-icon-content-text'>
                             Parier en toute sécurité avec un système 100% gratuit &nbsp;
-                            
+                            <img className='prankex' src='https://cdn.betterttv.net/emote/6279756b3c6f14b688476306/3x.webp'></img>
                         </div>
                     </div>
                 </div>
