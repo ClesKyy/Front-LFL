@@ -44,38 +44,19 @@ const rows = [
 ];
 
 export default function Classement(props) {
-  useEffect(()=>{
+  useEffect(() => {
   })
   return (
-    <div>
-      <div className='ranking'>
-        <div>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 1000 }} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell align="left">Position</StyledTableCell>
-                  <StyledTableCell>Nom</StyledTableCell>
-                  <StyledTableCell align="right">Partie</StyledTableCell>
-                  <StyledTableCell align="right">Victoire</StyledTableCell>
-                  <StyledTableCell align="right">Défaite</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <StyledTableRow >
-                    <StyledTableCell align="left">{row.position}</StyledTableCell>
-                    <StyledTableCell >{row.name}</StyledTableCell>
-                    <StyledTableCell align="right">{row.game}</StyledTableCell>
-                    <StyledTableCell align="right">{row.win}</StyledTableCell>
-                    <StyledTableCell align="right">{row.lose}</StyledTableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </div>
-      </div>
-    </div>
+
+    <TableBody>
+
+        <StyledTableRow >
+          <StyledTableCell align="left">{props.team.position}</StyledTableCell>
+          <StyledTableCell ><img className='classement-table-item-logo' src={props.team.logo}></img>{props.team.name}</StyledTableCell>
+          <StyledTableCell align="right"></StyledTableCell>
+          <StyledTableCell align="right"></StyledTableCell>
+          <StyledTableCell align="right"></StyledTableCell>
+        </StyledTableRow>
+    </TableBody>
   );
 }
