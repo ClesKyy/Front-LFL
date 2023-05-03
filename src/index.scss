@@ -65,6 +65,41 @@ h2 {
   align-items: center;
 }
 
+.home-header-banner{
+  background-image: url(https://www.gamereactor.fr/media/15/_3371513b.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+.home-title{
+
+}
+.home-title-div{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 500px;
+  margin-right: 500px
+}
+.home-container-icon{
+  display: flex;
+}
+.home-item-icon {
+}
+.home-icon{
+  width: 100px;
+}
+.home-item-icon-content-image,.home-item-icon-content-text{
+  text-align: center;
+}
+.home-item-icon-content-text{
+  margin-top: 10px;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+.prankex{
+  width: 10%;
+}
 
 //https://www.mmogratuit.com/wp-content/uploads/2014/12/League-of-Legends-wallpaper-4.jpg
 // Logo role https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/
