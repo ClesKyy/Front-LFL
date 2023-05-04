@@ -30,29 +30,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(position, name, game, win, lose) {
-  return { position, name, game, win, lose };
-}
-
-const rows = [
-  createData(1, 'Aegis', 6.0, 24, 4.0, 1),
-  createData(1, 'Aegis', 6.0, 24, 4.0, 1),
-  createData(1, 'Aegis', 6.0, 24, 4.0, 1),
-  createData(1, 'Aegis', 6.0, 24, 4.0, 1),
-  createData(1, 'Aegis', 6.0, 24, 4.0, 1),
-
-];
-
 export default function Classement(props) {
   useEffect(() => {
   })
   return (
-
     <TableBody>
-
         <StyledTableRow >
           <StyledTableCell align="left">{props.team.position}</StyledTableCell>
-          <StyledTableCell ><img className='classement-table-item-logo' src={props.team.logo}></img>{props.team.name}</StyledTableCell>
+          <StyledTableCell ><img className='classement-table-item-logo' src={props.team.logo}></img>{props.team.name.toUpperCase()}</StyledTableCell>
           <StyledTableCell align="right"></StyledTableCell>
           <StyledTableCell align="right"></StyledTableCell>
           <StyledTableCell align="right"></StyledTableCell>
