@@ -59,7 +59,7 @@ function ClassementApi(props) {
       <AppHeader />
       <div>
         <div className='ranking-title-div'>
-          <h1>Classement de la saison </h1>
+          <h1>Classement de la saison  </h1>
           </div>
         <div className='ranking'>
           <div className="ranking-row">

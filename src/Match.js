@@ -5,16 +5,13 @@ import moment from 'moment';
 
 
 function Match(props) {
+    const [buttonsVisible, setButtonsVisible] = useState(false);
     const handleClick = (index) => {
-        var blueButton = document.getElementById(`vote-button-blue-${index}`);
-        if (blueButton) {
-          blueButton.classList.remove("hidden-vote-button");
-        }
-      
-        var redButton = document.getElementById(`vote-button-red-${index}`);
-        if (redButton) {
-          redButton.classList.remove("hidden-vote-button");
-        }
+        setButtonsVisible((prevStates) => {
+          const newState = { ...prevStates };
+          newState[index] = !newState[index];
+          return newState;
+        });
       };
     return (
         <div>
@@ -33,11 +30,13 @@ function Match(props) {
                                                 <div>
                                                     <img className='match-logo-img' src={match.blueTeamLogo}></img>
                                                 </div>
-                                                <div id={`vote-button-blue-${index}`} className='hidden-vote-button'>
-                                                    <div className='vote-button'>
-                                                        <Button className='app-header-button-login'>Vote</Button>
+                                                {buttonsVisible[index] && (
+                                                    <div id={`vote-button-blue-${index}`}>
+                                                        <div className='vote-button'>
+                                                            <Button className='app-header-button-login'>Vote</Button>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                )}
                                             </div>
                                             <div className='match-title-team-left'>
                                                 {match.blueTeamName.toUpperCase()}
@@ -62,11 +61,13 @@ function Match(props) {
                                                 <div>
                                                     <img className='match-logo-img' src={match.redTeamLogo}></img>
                                                 </div>
-                                                <div id={`vote-button-red-${index}`} className='hidden-vote-button'>
-                                                    <div className='vote-button'>
-                                                        <Button className='app-header-button-login'>Vote</Button>
+                                                {buttonsVisible[index] && (
+                                                    <div id={`vote-button-red-${index}`}>
+                                                        <div className='vote-button'>
+                                                            <Button className='app-header-button-login'>Vote</Button>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
