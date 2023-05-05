@@ -7,7 +7,7 @@ import Team from "./Team";
 import './App.css';
 import AppHeader from "./AppHeader";
 import Classement from "./Classement";
-import { Paper, Table, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Paper, Table, TableBody, TableContainer, TableHead, TableRow } from "@mui/material";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -54,28 +54,31 @@ function ClassementApi(props) {
       console.log(err);
     })
   }, [])
-
-
   return (
     <div>
       <AppHeader />
       <div>
+        <div className='ranking-title-div'>
+          <h1>Classement de la saison </h1>
+          </div>
         <div className='ranking'>
-          <div>
+          <div className="ranking-row">
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 1000 }} aria-label="customized table">
+              <Table aria-label="customized table">
                 <TableHead>
                   <TableRow>
-                    <StyledTableCell align="left">Position</StyledTableCell>
-                    <StyledTableCell>Nom</StyledTableCell>
+                  <StyledTableCell style={{ paddingRight: "50px" }} align="left">Position</StyledTableCell>
+                    <StyledTableCell style={{ paddingRight: "8px" }}>Nom</StyledTableCell>
                     <StyledTableCell align="right">Partie</StyledTableCell>
                     <StyledTableCell align="right">Victoire</StyledTableCell>
-                    <StyledTableCell align="right">Défaite</StyledTableCell>
+                    <StyledTableCell style={{ paddingRight: "10px" }} align="right">Défaite</StyledTableCell>
                   </TableRow>
                 </TableHead>
-                {team.map((item, index) => (
-                  <Classement key={index} team={item} />
-                ))}
+                <TableBody>
+                  {team.map((item, index) => (
+                    <Classement key={index} team={item} />
+                  ))}
+                </TableBody>
               </Table>
             </TableContainer>
           </div>

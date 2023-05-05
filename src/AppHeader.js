@@ -97,7 +97,7 @@ function AppHeader(props) {
                         <a className='app-header-logo-link' href='/'> <img className='app-header-logo' src='https://lollfl.com/assets/logo-intro-home.svg?3d72643'></img> </a>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             <div className='app-header-div-button'>
-                                <Button className='app-header-button' color="inherit">Accueil</Button>
+                                <Button className='app-header-button' color="inherit" component={Link} to="/">Accueil</Button>
                                 <Button className='app-header-button' color="inherit" component={Link} to="/equipes">Équipe</Button>
                                 <Button className='app-header-button' color="inherit" component={Link} to="/classement">Classement</Button>
                                 <Button className='app-header-button' color="inherit" component={Link} to="/match">Match</Button>
