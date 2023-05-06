@@ -13,6 +13,9 @@ function Match(props) {
           return newState;
         });
       };
+      const handleClickBlue = (index) => {  
+        console.log(index);
+      };
     return (
         <div>
             <div className='match'>
@@ -28,12 +31,12 @@ function Match(props) {
                                         <div className='match-logo-left'>
                                             <div>
                                                 <div>
-                                                    <img className='match-logo-img' src={match.blueTeamLogo}></img>
+                                                    <img className={`${match.blueTeamScore < match.redTeamScore ? "match-logo-img-opacity" : match.blueTeamScore === match.redTeamScore ? "match-logo-img" : "match-logo-img"}`} src={match.blueTeamLogo}></img>
                                                 </div>
                                                 {buttonsVisible[index] && (
                                                     <div id={`vote-button-blue-${index}`}>
                                                         <div className='vote-button'>
-                                                            <Button className='app-header-button-login'>Vote</Button>
+                                                            <Button onClick={() => handleClickBlue(index)} className='app-header-button-login'>Vote</Button>
                                                         </div>
                                                     </div>
                                                 )}
@@ -47,7 +50,7 @@ function Match(props) {
                                                 {moment(match.matchDate).format('HH:mm')}
                                             </div>
                                             <div>
-                                                <span className={`${match.blueTeamScore < match.redTeamScore ? "score-red" : match.blueTeamScore === match.redTeamScore ? "" : "score-green"}`}>{match.blueTeamScore}</span>&nbsp;-&nbsp;<span className={`${match.redTeamScore < match.blueTeamScore ? "score-red" : match.blueTeamScore === match.redTeamScore ? "" : "score-green"}`}>{match.redTeamScore}</span>
+                                                <span className={`${match.blueTeamScore < match.redTeamScore ? "match-score-red" : match.blueTeamScore === match.redTeamScore ? "" : "match-score-green"}`}>{match.blueTeamScore}</span>&nbsp;-&nbsp;<span className={`${match.redTeamScore < match.blueTeamScore ? "match-score-red" : match.blueTeamScore === match.redTeamScore ? "" : "match-score-green"}`}>{match.redTeamScore}</span>
                                             </div>
                                             <div>
                                                 <Button className='app-header-button-login' color="inherit" onClick={() => handleClick(index)}>Parier</Button>
@@ -59,7 +62,7 @@ function Match(props) {
                                             </div>
                                             <div>
                                                 <div>
-                                                    <img className='match-logo-img' src={match.redTeamLogo}></img>
+                                                    <img className={`${match.redTeamScore < match.blueTeamScore ? "match-logo-img-opacity" : match.blueTeamScore === match.redTeamScore ? "match-logo-img" : "match-logo-img"}`} src={match.redTeamLogo}></img>
                                                 </div>
                                                 {buttonsVisible[index] && (
                                                     <div id={`vote-button-red-${index}`}>
