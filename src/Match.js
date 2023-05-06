@@ -8,13 +8,17 @@ function Match(props) {
     const [buttonsVisible, setButtonsVisible] = useState(false);
     const handleClick = (index) => {
         setButtonsVisible((prevStates) => {
-          const newState = { ...prevStates };
-          newState[index] = !newState[index];
-          return newState;
-        });
+            const newState = { ...prevStates };
+            newState[index] = !newState[index];
+            return newState;
+          });
       };
       const handleClickBlue = (index) => {  
-        console.log(index);
+        setButtonsVisible((prevStates) => {
+            const newState = { ...prevStates };
+            newState[index] = !newState[index];
+            return newState;
+          });
       };
     return (
         <div>
