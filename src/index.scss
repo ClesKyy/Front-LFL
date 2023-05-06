@@ -351,6 +351,10 @@ h2 {
 .match-logo-img {
   width: 100px;
 }
+.match-logo-img-opacity{
+  width: 100px;
+  opacity: 20%;
+}
 
 .match-card-content {
   display: flex;
@@ -376,14 +380,10 @@ h2 {
   font-size: 32px;
   align-items: center;
 }
-
-
-
-.score-red {
+.match-score-red {
   color: red;
 }
-
-.score-green {
+.match-score-green {
   color: green;
 }
 .vote-button{
@@ -497,6 +497,15 @@ width: 50%;
   font-weight: bold !important;
 }
 
-.classement-table-item-logo{
-  width: 3%;
+.ranking-table-item-logo{
+  width: 5%;
+  margin-right: 10px
+}
+.ranking-row{
+  width: 80%;
+  margin-top: 50px;
+}
+.ranking-title-div{
+  text-align: center;
+  margin-top: 50px;
 }

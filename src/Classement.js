@@ -24,7 +24,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   '&:last-child td, &:last-child th': {
     border: 0,
   },
@@ -34,14 +33,13 @@ export default function Classement(props) {
   useEffect(() => {
   })
   return (
-    <TableBody>
+
         <StyledTableRow >
           <StyledTableCell align="left">{props.team.position}</StyledTableCell>
-          <StyledTableCell ><img className='classement-table-item-logo' src={props.team.logo}></img>{props.team.name.toUpperCase()}</StyledTableCell>
-          <StyledTableCell align="right"></StyledTableCell>
-          <StyledTableCell align="right"></StyledTableCell>
-          <StyledTableCell align="right"></StyledTableCell>
+          <StyledTableCell ><img className='ranking-table-item-logo' src={props.team.logo}></img>{props.team.name.toUpperCase()}</StyledTableCell>
+          <StyledTableCell align="right">{props.team.games}</StyledTableCell>
+          <StyledTableCell align="right">{props.team.win}</StyledTableCell>
+          <StyledTableCell align="right">{props.team.lose}</StyledTableCell>
         </StyledTableRow>
-    </TableBody>
   );
 }

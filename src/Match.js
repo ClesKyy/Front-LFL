@@ -5,16 +5,20 @@ import moment from 'moment';
 
 
 function Match(props) {
+    const [buttonsVisible, setButtonsVisible] = useState(false);
     const handleClick = (index) => {
-        var blueButton = document.getElementById(`vote-button-blue-${index}`);
-        if (blueButton) {
-          blueButton.classList.remove("hidden-vote-button");
-        }
-      
-        var redButton = document.getElementById(`vote-button-red-${index}`);
-        if (redButton) {
-          redButton.classList.remove("hidden-vote-button");
-        }
+        setButtonsVisible((prevStates) => {
+            const newState = { ...prevStates };
+            newState[index] = !newState[index];
+            return newState;
+          });
+      };
+      const handleClickBlue = (index) => {  
+        setButtonsVisible((prevStates) => {
+            const newState = { ...prevStates };
+            newState[index] = !newState[index];
+            return newState;
+          });
       };
     return (
         <div>
@@ -31,13 +35,15 @@ function Match(props) {
                                         <div className='match-logo-left'>
                                             <div>
                                                 <div>
-                                                    <img className='match-logo-img' src={match.blueTeamLogo}></img>
+                                                    <img className={`${match.blueTeamScore < match.redTeamScore ? "match-logo-img-opacity" : match.blueTeamScore === match.redTeamScore ? "match-logo-img" : "match-logo-img"}`} src={match.blueTeamLogo}></img>
                                                 </div>
-                                                <div id={`vote-button-blue-${index}`} className='hidden-vote-button'>
-                                                    <div className='vote-button'>
-                                                        <Button className='app-header-button-login'>Vote</Button>
+                                                {buttonsVisible[index] && (
+                                                    <div id={`vote-button-blue-${index}`}>
+                                                        <div className='vote-button'>
+                                                            <Button onClick={() => handleClickBlue(index)} className='app-header-button-login'>Vote</Button>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                )}
                                             </div>
                                             <div className='match-title-team-left'>
                                                 {match.blueTeamName.toUpperCase()}
@@ -48,7 +54,7 @@ function Match(props) {
                                                 {moment(match.matchDate).format('HH:mm')}
                                             </div>
                                             <div>
-                                                <span className={`${match.blueTeamScore < match.redTeamScore ? "score-red" : match.blueTeamScore === match.redTeamScore ? "" : "score-green"}`}>{match.blueTeamScore}</span>&nbsp;-&nbsp;<span className={`${match.redTeamScore < match.blueTeamScore ? "score-red" : match.blueTeamScore === match.redTeamScore ? "" : "score-green"}`}>{match.redTeamScore}</span>
+                                                <span className={`${match.blueTeamScore < match.redTeamScore ? "match-score-red" : match.blueTeamScore === match.redTeamScore ? "" : "match-score-green"}`}>{match.blueTeamScore}</span>&nbsp;-&nbsp;<span className={`${match.redTeamScore < match.blueTeamScore ? "match-score-red" : match.blueTeamScore === match.redTeamScore ? "" : "match-score-green"}`}>{match.redTeamScore}</span>
                                             </div>
                                             <div>
                                                 <Button className='app-header-button-login' color="inherit" onClick={() => handleClick(index)}>Parier</Button>
@@ -60,13 +66,15 @@ function Match(props) {
                                             </div>
                                             <div>
                                                 <div>
-                                                    <img className='match-logo-img' src={match.redTeamLogo}></img>
+                                                    <img className={`${match.redTeamScore < match.blueTeamScore ? "match-logo-img-opacity" : match.blueTeamScore === match.redTeamScore ? "match-logo-img" : "match-logo-img"}`} src={match.redTeamLogo}></img>
                                                 </div>
-                                                <div id={`vote-button-red-${index}`} className='hidden-vote-button'>
-                                                    <div className='vote-button'>
-                                                        <Button className='app-header-button-login'>Vote</Button>
+                                                {buttonsVisible[index] && (
+                                                    <div id={`vote-button-red-${index}`}>
+                                                        <div className='vote-button'>
+                                                            <Button className='app-header-button-login'>Vote</Button>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

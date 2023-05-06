@@ -11,6 +11,7 @@ import ClassementApi from './ClassementApi';
 import MatchApi from './MatchApi';
 import Profile from './Profile';
 import ChangePassword from './ChangePassword';
+import Test from './Test';
 
 function App() {
   useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/match" element= {<MatchApi/>} />
         <Route path="/profil" element= {<Profile/>} />
         <Route path="/profil/password" element= {<ChangePassword/>} />
+        <Route path="/test" element= {<Test/>} />
         </Routes>
         </BrowserRouter>
   );
