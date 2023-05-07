@@ -3,11 +3,12 @@ import React from 'react';
 import AppHeader from './AppHeader';
 import './App.css';
 import { Button, Card, CardContent, FormControl, IconButton, Input, InputAdornment, InputLabel } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { CheckCircle, Visibility, VisibilityOff } from '@mui/icons-material';
 import axios from 'axios';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 function ChangePassword(props) {
+    const pseudo = localStorage.getItem("pseudo");
     const [showOldPassword, setOldShowPassword] = React.useState(false);
     const [showNewPassword, setNewShowPassword] = React.useState(false);
     const [formDataChangeChangePassword, setFormDataChangePassword] = React.useState({ oldpassword: '', newpassword: '' });
@@ -19,15 +20,24 @@ function ChangePassword(props) {
     };
     const onSubmitChangePassword = (event) => {
         event.preventDefault();
-        axios.put(`https://localhost:7108/auth/ClesKy`, formDataChangeChangePassword)
+        axios.put(`https://localhost:7108/auth/${pseudo}`, formDataChangeChangePassword)
             .then((res) => {
-                localStorage.setItem("password", formDataChangeChangePassword.password);
-                console.log(res.data);
-                console.log("mot");
+                localStorage.removeItem("access_token");
+                localStorage.removeItem("pseudo");
+                localStorage.removeItem("password");
+                var errorMessage = document.getElementById("signup-message");
+                errorMessage.classList.remove("login__hidden-signup");
+                var errorMessage = document.getElementById("error-message");
+                errorMessage.classList.add("login__hidden");
+                setTimeout(function() {
+                    window.location.href = "/login";
+                }, 2000);
             })
             .catch(() => {
                 var errorMessage = document.getElementById("error-message");
                 errorMessage.classList.remove("login__hidden");
+                var errorMessage = document.getElementById("signup-message");
+                errorMessage.classList.add("login__hidden-signup");
             })
     }
     return (
@@ -81,7 +91,8 @@ function ChangePassword(props) {
                             </FormControl>
                         </div>
                         <div className='change-password-button-div'><Button className='change-password-button-submit' type='submit' variant="contained">Valider</Button>
-                            <div id="error-message" className='login__hidden'><span><CancelIcon></CancelIcon></span> Identifiants incorrects</div>
+                            <div id="error-message" className='login__hidden'><span><CancelIcon></CancelIcon></span> Une erreur est survenue</div>
+                            <div id="signup-message" className='login__hidden-signup'><span><CheckCircle></CheckCircle></span> Votre mot de passe a été changé</div>
                         </div>
 
                     </CardContent>
