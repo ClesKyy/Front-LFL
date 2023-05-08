@@ -16,7 +16,7 @@ function Team(props) {
                                         <img className='team__card-logo-img' src={props.team.logo}></img>
                                     </div>
                                     <div className='team__card-name'>
-                                        {props.team.label}
+                                        {props.team.name.toUpperCase()}
                                         </div>
                                 </CardContent>
                             </Card>

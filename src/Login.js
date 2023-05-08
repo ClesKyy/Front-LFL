@@ -29,8 +29,8 @@ function Login(props) {
     const [showPassword, setShowPassword] = React.useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
     const [value, setValue] = React.useState('1');
-    const [formDataLogin, setFormDataLogin] = React.useState({ pseudo: '', password: '' });
-    const [formDataSignUp, setFormDataSignUp] = React.useState({ pseudo: '', password: '', email: '' });
+    const [formDataLogin, setFormDataLogin] = React.useState({ name: '', password: '' });
+    const [formDataSignUp, setFormDataSignUp] = React.useState({ name: '', password: '', email: '' });
     const onSubmitLogin = (event) => {
         event.preventDefault();
 
@@ -39,7 +39,7 @@ function Login(props) {
                 console.log(res.data.token);
                 localStorage.setItem("access_token", res.data.token);
                 const token = localStorage.getItem("access_token");
-                localStorage.setItem("pseudo", formDataLogin.pseudo);
+                localStorage.setItem("name", formDataLogin.name);
                 localStorage.setItem("password", formDataLogin.password);
                 if (token != null) {
                     window.location.href = "/";
@@ -115,7 +115,7 @@ function Login(props) {
                                                     <div className='login__column-inputs'>
                                                         <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                                             <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                                            <TextField onChange={(event) => handleChangeLogin(event)} name='pseudo' className='login__text-user' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
+                                                            <TextField onChange={(event) => handleChangeLogin(event)} name='name' className='login__text-user' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
                                                         </Box>
                                                         <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                                             <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
@@ -164,7 +164,7 @@ function Login(props) {
                                                     <div className='login__column-inputs'>
                                                         <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                                             <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                                            <TextField onChange={(event) => handleChangeSignUp(event)} className='login__text-user' name='pseudo' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
+                                                            <TextField onChange={(event) => handleChangeSignUp(event)} className='login__text-user' name='name' id="input-with-sx" label="Nom d'utilisateur" variant="standard" />
                                                         </Box>
                                                         <Box className='login__inputs' sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                                             <Email sx={{ color: 'action.active', mr: 1, my: 0.5 }} />

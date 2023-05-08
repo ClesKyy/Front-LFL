@@ -15,10 +15,10 @@ const theme = createTheme({
 });
 
 function Profile(props) {
-    const pseudo = localStorage.getItem("pseudo");
+    const name = localStorage.getItem("name");
     const [user, setUser] = useState({});
     useEffect(() => {
-        axios.get(`https://localhost:7108/auth/${pseudo}`, {})
+        axios.get(`https://localhost:7108/auth/${name}`, {})
             .then((res) => {
                 setUser(res.data);
                 console.log(res.data)
@@ -44,7 +44,7 @@ function Profile(props) {
 
                     </div>
                     <div className='profile-user-name'>
-                        {user.pseudo}
+                        {user.name}
                     </div>
                     <CardContent>
                         <div className='profile-content-row'>
@@ -124,7 +124,7 @@ function Profile(props) {
                         <div className='profile-content-row'>
                             <div className='profile-content-left'>
                                 <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Nom d'utilisateur :</span>
-                                <div>{user.pseudo}</div>
+                                <div>{user.name}</div>
                             </div>
                             <div className='profile-content-right'>
                                 <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Email :</span>
