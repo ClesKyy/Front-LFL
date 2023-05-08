@@ -9,8 +9,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 
 function ChangePassword(props) {
     const name = localStorage.getItem("name");
-    const [showOldPassword, setOldShowPassword] = React.useState(false);
-    const [showNewPassword, setNewShowPassword] = React.useState(false);
+    const [showPassword, setShowPassword] = React.useState(false);
+    const [showNewPassword, setShowNewPassword] = React.useState(false);
     const [formDataChangeChangePassword, setFormDataChangePassword] = React.useState({ oldpassword: '', newpassword: '' });
     const handleChangeChangePassword = (event, newValue) => {
         setFormDataChangePassword({
@@ -29,7 +29,7 @@ function ChangePassword(props) {
                 errorMessage.classList.remove("login__hidden-signup");
                 var errorMessage = document.getElementById("error-message");
                 errorMessage.classList.add("login__hidden");
-                setTimeout(function() {
+                setTimeout(function () {
                     window.location.href = "/login";
                 }, 2000);
             })
@@ -56,15 +56,14 @@ function ChangePassword(props) {
                                     onChange={(event) => handleChangeChangePassword(event)}
                                     id="change-password-input-current-password"
                                     name='oldpassword'
-                                    type={showOldPassword ? 'text' : 'oldPassword'}
+                                    type={showPassword ? 'text' : 'password'}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
-                                                onChange={(event) => handleChangeChangePassword(event)}
                                                 aria-label="toggle password visibility"
-                                                onClick={() => setOldShowPassword(!showOldPassword)}
+                                                onClick={() => setShowPassword(!showPassword)}
                                             >
-                                                {showOldPassword ? <Visibility /> : <VisibilityOff />}
+                                                {showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>
                                         </InputAdornment>
                                     }
@@ -76,12 +75,12 @@ function ChangePassword(props) {
                                     onChange={(event) => handleChangeChangePassword(event)}
                                     id="change-password-input-new-password"
                                     name='newpassword'
-                                    type={showNewPassword ? 'text' : 'newpassword'}
+                                    type={showNewPassword ? 'text' : 'password'}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
                                                 aria-label="toggle password visibility"
-                                                onClick={() => setNewShowPassword(!showNewPassword)}
+                                                onClick={() => setShowNewPassword(!showNewPassword)}
                                             >
                                                 {showNewPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>
