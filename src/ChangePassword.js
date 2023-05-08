@@ -8,7 +8,7 @@ import axios from 'axios';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 function ChangePassword(props) {
-    const pseudo = localStorage.getItem("pseudo");
+    const name = localStorage.getItem("name");
     const [showOldPassword, setOldShowPassword] = React.useState(false);
     const [showNewPassword, setNewShowPassword] = React.useState(false);
     const [formDataChangeChangePassword, setFormDataChangePassword] = React.useState({ oldpassword: '', newpassword: '' });
@@ -20,10 +20,10 @@ function ChangePassword(props) {
     };
     const onSubmitChangePassword = (event) => {
         event.preventDefault();
-        axios.put(`https://localhost:7108/auth/${pseudo}`, formDataChangeChangePassword)
+        axios.put(`https://localhost:7108/auth/${name}`, formDataChangeChangePassword)
             .then((res) => {
                 localStorage.removeItem("access_token");
-                localStorage.removeItem("pseudo");
+                localStorage.removeItem("name");
                 localStorage.removeItem("password");
                 var errorMessage = document.getElementById("signup-message");
                 errorMessage.classList.remove("login__hidden-signup");
