@@ -39,7 +39,7 @@ function Profile(props) {
                             <img className='profile-avatar-icon' src="https://1.bp.blogspot.com/-9N4wHnisYnI/YTurIWCPi3I/AAAAAAAB_vE/x9UQiid2gwo1i1GJ_AOwrJyL-QDiTap-gCLcBGAsYHQ/w200-h200/5067.jpg" />
                         </div>
                         <div className='profile-avatar-level'>
-                            <span className='profile-avatar-level-number'>250</span>
+                            <span className='profile-avatar-level-number'>0</span>
                         </div>
 
                     </div>
@@ -55,10 +55,10 @@ function Profile(props) {
                                     </div>
                                     <div>
                                         <div style={{ fontWeight: 'bold', fontSize: '24px' }}>
-                                            Diamond
+                                            Challenger
                                         </div>
                                         <div>
-                                            32 LP
+                                            0 LP
                                         </div>
                                     </div>
                                 </div>
@@ -71,14 +71,14 @@ function Profile(props) {
                                     <div className='profile-content-card-level'>
                                         <div className='profile-content-card-level-number'>
                                             <div style={{ fontWeight: 'bold', fontSize: '24px' }}>
-                                                Niv. 250
+                                                Niv. 1
                                             </div>
                                             <div>
-                                                35 000 Exp
+                                                0 Exp
                                             </div>
                                         </div>
                                         <div>
-                                            <LinearProgress color='inherit' variant="determinate" value={50} />
+                                            <LinearProgress color='inherit' variant="determinate" value={0} />
                                         </div>
                                     </div>
                                 </div>
