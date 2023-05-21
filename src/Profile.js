@@ -15,10 +15,10 @@ const theme = createTheme({
 });
 
 function Profile(props) {
-    const pseudo = localStorage.getItem("pseudo");
+    const name = localStorage.getItem("name");
     const [user, setUser] = useState({});
     useEffect(() => {
-        axios.get(`https://localhost:7108/auth/${pseudo}`, {})
+        axios.get(`https://localhost:7108/auth/${name}`, {})
             .then((res) => {
                 setUser(res.data);
                 console.log(res.data)
@@ -39,12 +39,12 @@ function Profile(props) {
                             <img className='profile-avatar-icon' src="https://1.bp.blogspot.com/-9N4wHnisYnI/YTurIWCPi3I/AAAAAAAB_vE/x9UQiid2gwo1i1GJ_AOwrJyL-QDiTap-gCLcBGAsYHQ/w200-h200/5067.jpg" />
                         </div>
                         <div className='profile-avatar-level'>
-                            <span className='profile-avatar-level-number'>250</span>
+                            <span className='profile-avatar-level-number'>0</span>
                         </div>
 
                     </div>
                     <div className='profile-user-name'>
-                        {user.pseudo}
+                        {user.name}
                     </div>
                     <CardContent>
                         <div className='profile-content-row'>
@@ -55,10 +55,10 @@ function Profile(props) {
                                     </div>
                                     <div>
                                         <div style={{ fontWeight: 'bold', fontSize: '24px' }}>
-                                            Diamond
+                                            Challenger
                                         </div>
                                         <div>
-                                            32 LP
+                                            0 LP
                                         </div>
                                     </div>
                                 </div>
@@ -71,14 +71,14 @@ function Profile(props) {
                                     <div className='profile-content-card-level'>
                                         <div className='profile-content-card-level-number'>
                                             <div style={{ fontWeight: 'bold', fontSize: '24px' }}>
-                                                Niv. 250
+                                                Niv. 1
                                             </div>
                                             <div>
-                                                35 000 Exp
+                                                0 Exp
                                             </div>
                                         </div>
                                         <div>
-                                            <LinearProgress color='inherit' variant="determinate" value={50} />
+                                            <LinearProgress color='inherit' variant="determinate" value={0} />
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@ function Profile(props) {
                         <div className='profile-content-row'>
                             <div className='profile-content-left'>
                                 <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Nom d'utilisateur :</span>
-                                <div>{user.pseudo}</div>
+                                <div>{user.name}</div>
                             </div>
                             <div className='profile-content-right'>
                                 <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Email :</span>

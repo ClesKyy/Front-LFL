@@ -22,8 +22,6 @@ function PlayerApi(props) {
     })
   }, [teamName]);
 
-
-
   useEffect(() => {
     axios.get(`https://localhost:7108/team/${teamName}`, {})
       .then((res) => {

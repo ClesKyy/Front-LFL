@@ -22,7 +22,7 @@ const theme = createTheme({
 });
 
 function AppHeader(props) {
-    const pseudo = localStorage.getItem("pseudo");
+    const name = localStorage.getItem("name");
     const [anchorEl, setAnchorEl] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
     const open = Boolean(anchorEl);
@@ -39,7 +39,7 @@ function AppHeader(props) {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        axios.get(`https://localhost:7108/auth/${pseudo}`, {})
+        axios.get(`https://localhost:7108/auth/${name}`, {})
           .then((res) => {
             setUser(res.data);
             console.log(res.data)
@@ -110,7 +110,7 @@ function AppHeader(props) {
                                     <div className='app-header-div-profile'>
                                         <div>
                                             <div>
-                                                <span style={{ fontWeight: 'bold' }}>{pseudo}</span>
+                                                <span style={{ fontWeight: 'bold' }}>{name}</span>
                                             </div>
                                             <div className='app-header-div-coins-bet'>
                                                 <div>
